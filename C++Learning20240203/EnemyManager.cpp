@@ -15,7 +15,6 @@ EnemyManager::~EnemyManager()
 void EnemyManager::Update()
 {
 	//インターバルを経過したら敵を生成する
-	//
 	_currentTimer += Scene::DeltaTime();
 	if (_currentTimer > _generateInterval)
 	{

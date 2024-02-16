@@ -7,7 +7,7 @@ class Enemy : public IGameObject
 {
 private:
 	const Texture _emoji{ U"👾"_emoji };
-	double _speed = 1;
+	float _speed = 1;
 	bool _isFacingRight = true;
 	std::shared_ptr<Player> _player;
 public:

@@ -12,7 +12,7 @@ private:
 	// プレイヤーが右を向いているか | Whether player is facing right
 	bool _isFacingRight = true;
 public:
-	Player(int posx, int posy);
+	Player(Vector2 pos);
 	Vector2 GetPos() { return _pos; };
 	void Update() override;
 	void Draw() override;

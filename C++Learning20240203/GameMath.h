@@ -12,13 +12,13 @@ public:
 		X = 0;
 		Y = 0;
 	}
-	Vector2(int x, int y)
+	Vector2(float x, float y)
 	{
 		X = x;
 		Y = y;
 	}
-	int X;
-	int Y;
+	float X;
+	float Y;
 
 	Vector2 operator+(const Vector2& other)
 	{
@@ -54,16 +54,11 @@ public:
 		return *this;
 	}
 
-	Vector2 Normalized(const Vector2& other)
+	static Vector2 Normalized(const Vector2& other)
 	{
-		if (other.X != 0 && other.Y != 0) {
-			return Vector2(X / other.X, Y / other.Y);
-		}
-		else {
-			// ゼロで割り算を避けるため、特別な処理が必要な場合にこちらを選択するか、
-			// エラー処理を行うか、ゼロベクトルを返すかなど、具体的な要件に合わせて対応してください。
-			// ここではゼロベクトルを返す例としています。
-			return Vector2(0, 0);
-		}
+		float length = sqrt(other.X * other.X + other.Y * other.Y);
+		return Vector2(other.X / length, other.Y / length);
 	}
+
+	
 };

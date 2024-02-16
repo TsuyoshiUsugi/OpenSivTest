@@ -9,13 +9,14 @@ void Main()
 
 	// 背景の色を設定する | Set the background color
 	Scene::SetBackground(ColorF{ 0.6, 0.8, 0.7 });
-	Player player = Player(400, 270);
-	EnemyManager enemyManager = EnemyManager(std::make_shared<Player>(player));
+	//Player player = Player(400, 270);
+	std::shared_ptr<Player> playerPtr = std::make_shared<Player>(Vector2(400, 270));
+	EnemyManager enemyManager = EnemyManager(playerPtr);
 
 	while (System::Update())
 	{
-		player.Update();
-		player.Draw();
+		playerPtr->Update();
+		playerPtr->Draw();
 		enemyManager.Update();
 		enemyManager.Draw();
 	}

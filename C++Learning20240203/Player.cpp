@@ -1,10 +1,10 @@
 ﻿#include "stdafx.h"
 #include "Player.h"
 
-Player::Player(int posx, int posy)
+Player::Player(Vector2 pos)
 {
 	// プレイヤーの初期位置 | Player's initial position
-	_pos = Vector2(posx, posy);
+	_pos = pos;
 }
 
 void Player::Update()
