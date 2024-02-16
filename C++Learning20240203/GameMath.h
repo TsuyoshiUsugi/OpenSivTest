@@ -54,8 +54,16 @@ public:
 		return *this;
 	}
 
-	Vector2 Normalized()
+	Vector2 Normalized(const Vector2& other)
 	{
-		return Vector2(X / (X + Y), Y / (X + Y));
+		if (other.X != 0 && other.Y != 0) {
+			return Vector2(X / other.X, Y / other.Y);
+		}
+		else {
+			// ゼロで割り算を避けるため、特別な処理が必要な場合にこちらを選択するか、
+			// エラー処理を行うか、ゼロベクトルを返すかなど、具体的な要件に合わせて対応してください。
+			// ここではゼロベクトルを返す例としています。
+			return Vector2(0, 0);
+		}
 	}
 };

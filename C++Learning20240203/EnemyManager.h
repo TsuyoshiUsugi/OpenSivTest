@@ -11,15 +11,13 @@ private:
 	float _currentTimer = 0;
 	float _generateInterval = 2.0;
 	std::shared_ptr<Player> _player;
+	Vector2 _generateDis = Vector2(400, 300);
 
-	EnemyManager(std::shared_ptr<Player> player)
-	{
-		_player = player;
-	}
 public:
-	EnemyManager();
+	EnemyManager(std::shared_ptr<Player> player);
 	~EnemyManager();
 	void Update() override;
+	Vector2 GetRandomPos();
 	void Draw() override;
 };
 

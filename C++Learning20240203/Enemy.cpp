@@ -5,7 +5,7 @@
 void Enemy::Update()
 {
 	auto dir = _player->GetPos() - _pos;
-	_pos += dir * _speed;
+	_pos += dir.Normalized(dir) * _speed;
 }
 
 void Enemy::Draw()

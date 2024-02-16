@@ -2,6 +2,7 @@
 # include "Player.h"
 # include "GameMath.h"
 # include "Enemy.h"
+# include "EnemyManager.h"
 
 void Main()
 {
@@ -9,14 +10,14 @@ void Main()
 	// 背景の色を設定する | Set the background color
 	Scene::SetBackground(ColorF{ 0.6, 0.8, 0.7 });
 	Player player = Player(400, 270);
-	Enemy enemy = Enemy(100, 100, std::make_shared<Player>(player));
+	EnemyManager enemyManager = EnemyManager(std::make_shared<Player>(player));
 
 	while (System::Update())
 	{
 		player.Update();
 		player.Draw();
-		enemy.Update();
-		enemy.Draw();
+		enemyManager.Update();
+		enemyManager.Draw();
 	}
 }
 
