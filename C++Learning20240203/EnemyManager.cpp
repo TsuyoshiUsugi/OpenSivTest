@@ -39,7 +39,29 @@ Vector2 EnemyManager::GetRandomPos()
 	// 乱数の範囲を指定
 	std::uniform_int_distribution<int> xPos(_player->GetPos().X - _generateDis.X, _player->GetPos().X + _generateDis.X);
 	std::uniform_int_distribution<int> yPos(_player->GetPos().Y - _generateDis.Y, _player->GetPos().Y + _generateDis.Y);
-	return Vector2(xPos(mt), yPos(mt));
+
+	int randomPosX;
+	do {
+		randomPosX = xPos(mt);
+	} while (!IsInExcludedRegion(randomPosX, _excludedRegion.X));
+	int randomPosY;
+	do {
+		randomPosY = yPos(mt);
+	} while (!IsInExcludedRegion(randomPosY, _excludedRegion.Y));
+
+	return Vector2(randomPosX, randomPosY);
+
+}
+
+bool EnemyManager::IsInExcludedRegion(int num, int exclude)
+{
+	// 除外する領域を定義し、pos がその範囲内にあるかどうかを確認するロジックを実装
+	// ここでは、例として playerPos.X - 200 から playerPos.X + 200 の範囲を除外するとします
+	if (num >= _player->GetPos().X - exclude && num <= _player->GetPos().X + exclude) {
+		return false;  // 除外する領域内
+	}
+
+	return true;  // 除外する領域外
 }
 
 void EnemyManager::Draw()
